@@ -1,6 +1,8 @@
 $(document).ready(function() {
+
+  var $table = $('#table');
   // logContainer holds all of our items
-  var logContainer = $(".log-container");
+  var logContainer = $("#log-container");
   var itemLocationSelect = $("#location");
   var itemFilterSelect = $("#filter");
 
@@ -32,7 +34,12 @@ $(document).ready(function() {
     $.get(newURLString, function(data) {
       items = data;
       console.log(items);
-        displayAll();
+      logContainer.empty();
+      $(function() {
+        $table.bootstrapTable({data: items})
+      })
+      
+      //displayAll();
     });
   }
 
@@ -49,12 +56,11 @@ $(document).ready(function() {
 
 getItems(itemLocationSelect.val(), itemFilterSelect.val());
   
-function displayAll(){
+/*function displayAll(){
     logContainer.empty();
     var note, expirationDate, dateObtained, block1;
     var today = moment().format('MM/DD/YY');
     for (let i = 0; i < items.length; i++){
-        let itemNum = i + 1;
         if(items[i].perishable) {
           if(items[i].expiration) {
             expirationDate = items[i].expiration_date;
@@ -78,7 +84,7 @@ function displayAll(){
             if (moment(dateObtained).endOf('day').fromNow() > 30) { 
               block1 = "<td class='animated pulse infinite text-danger font-weight-bold'>" + note + "</td>";
             } else if (moment(dateObtained).endOf('day').fromNow() > 14 && moment(dateObtained).endOf('day').fromNow() <= 30) {
-              block1 = "<td class='text-danger'>" + note + "</td>";
+              block1 = "<td class='text-white bg-warning'>" + note + "</td>";
             } else
               block1 = "<td>" + note + "</td>";
           }  
@@ -86,21 +92,20 @@ function displayAll(){
         else {
           expirationDate = "";
           dateObtained = "";
+          block1 = "<td></td>";
         }
 
         logContainer.append("<tr>"
-                                + "<th scope='row'>" + itemNum + "</th>"
                                 + "<td>" + items[i].name + "</td>" 
                                 + "<td>" + expirationDate + "</td>"
                                 + "<td>" + dateObtained + "</td>"
                                 + "<td>" + items[i].quantity + " " + items[i].unit_type + "</td>"
                                 + block1
-                                + "<td><button type='button' class='btn btn-primary update' data-id1='" + items[i].id + "'>Update</button></td>"
-                                +"<td ><button type='button' class='btn btn-danger delete' data-id2='" + items[i].id + "'>Delete</button></td>"
-                                + "</tr>");
+                                + "<td><a class='like' href='javascript:void(0)'><i class='fas fa-pencil-alt'></i></a>  <a class='remove' href='javascript:void(0)'><i class='fa fa-trash'></i></a></td>" +
+                                "</tr>");
     }
-}
-
+}*/
+  
   // This function figures out which item we want to delete and then calls
   // deleteItem
   function handleItemDelete() {
