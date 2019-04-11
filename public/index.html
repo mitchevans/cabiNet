@@ -26,39 +26,19 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron animated slideInDown">
-      <h1 class="display-4" class="font-weight-bold">
+    <div class="jumbotron animated slideInLeft">
+      <h1 class="display-4 animated slideInDown" class="font-weight-bold">
         <div class="btn-group">   
-        </div>cabiNe<a href="/cms"><i class="fas fa-plus-circle animated pulse infinite"></i></a>
+        </div>cabiNe<a href="/log"><i class="fas fa-plus-circle animated pulse infinite"></i></a>
       </h1>
+      <p class="lead font-weight-bold" id="lead2">A simple logger web app for your home items to keep track of perishables and inventory.</p>
       <hr class="my-4">
       
-      <p class="lead font-weight-bold animated slideInLeft">Click + above to add new item.</p>
-      <p class="animated fadeIn delay-1s">Search for items by filter and/or by search bar.</p>
-
-      <div class="animated flipInX delay-1s">
-        <select class="custom-select col-md-2" id="location">
-          <option selected value="">View All</option>
-          <option value="Fridge">Fridge</option>
-          <option value="Freezer">Freezer</option>
-          <option value="Pantry">Pantry</option>
-          <option value="Fruit Bowl">Fruit Bowl</option>
-          <option value="Spice Rack">Spice Rack</option>
-          <option value="Medicine Cabinet">Medicine Cabinet</option>
-          <option value="Closet">Closet</option>
-          <option value="Supplies Cabinet">Supplies Cabinet</option>
-        </select>
-
-        <select class="custom-select col-md-2" id="filter">
-          <option selected value="1">Persishable</option>
-          <option value="0">Non-Perishable</option>
-          <option value="">All</option>
-        </select>
-      </div>
-
+      <p class="lead font-weight-bold" id="lead1">.</p>
+      <p class="animated fadeIn delay-5s">Click + above to start app.</p>
     </div>
 
-    <table id="table" data-toggle="table" data-pagination="true" data-search="true" class="animated fadeInUp delay-1s">
+    <table id="table" data-toggle="table" data-pagination="true" data-search="true" class="animated fadeInUp delay-5s">
       <thead>
         <tr>
           <th data-align="center" data-sortable="true">Item</th>
@@ -69,7 +49,6 @@
           <th data-align="center">Item Operate</th>
         </tr>
       </thead>
-      <tbody id="log-container"></tbody>
     </table>
 
   </div>
