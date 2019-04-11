@@ -26,52 +26,17 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron" id="jumbotron0">
+    <div class="jumbotron animated slideInLeft" id="jumbotron0">
       <h1 class="display-4" class="font-weight-bold">
         <div class="btn-group">   
-        </div>cabiNe<a href="/cms"><i class="fas fa-plus-circle animated pulse infinite"></i></a>
+        </div>cabiNe<a href="/log"><i class="fas fa-plus-circle animated pulse infinite"></i></a>
       </h1>
-      <p class="lead font-weight-bold">A simple log web app for your home items to track perishables, inventory & more.</p>
+      <p class="lead font-weight-bold" id="lead2">A simple log web app for your home items to track perishables, inventory & more.</p>
       <hr class="my-4">
       
-      <p class="lead font-weight-bold">Click + above to add new item.</p>
-      <p>Search for items by filter and/or by search bar.</p>
-
-      <div class="animated flipInX delay-1s">
-        <select class="custom-select col-md-2" id="location">
-          <option selected value="">View All</option>
-          <option value="Fridge">Fridge</option>
-          <option value="Freezer">Freezer</option>
-          <option value="Pantry">Pantry</option>
-          <option value="Fruit Bowl">Fruit Bowl</option>
-          <option value="Spice Rack">Spice Rack</option>
-          <option value="Medicine Cabinet">Medicine Cabinet</option>
-          <option value="Closet">Closet</option>
-          <option value="Supplies Cabinet">Supplies Cabinet</option>
-        </select>
-
-        <select class="custom-select col-md-2" id="filter">
-          <option selected value="1">Persishable</option>
-          <option value="0">Non-Perishable</option>
-          <option value="">All</option>
-        </select>
-      </div>
-
+      <p class="lead" id="lead1">.</p>
+      <p class="animated fadeIn">Click on + above to start the app.</p>
     </div>
-
-    <table class="bg-light animated slideInUp delay-1s" id="table" data-toggle="table" data-pagination="true" data-search="true" data-height="600">
-      <thead>
-        <tr>
-          <th data-align="center" data-sortable="true">Item</th>
-          <th data-align="center" data-sortable="true">Expiration</th>
-          <th data-align="center" data-sortable="true">Date Obtained</th>
-          <th data-align="center">Quantity</th>
-          <th data-align="center">Note</th>
-          <th data-align="center">Item Operate</th>
-        </tr>
-      </thead>
-      <tbody id="log-container"></tbody>
-    </table>
 
   </div>
 
