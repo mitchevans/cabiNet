@@ -1,7 +1,7 @@
 var words = ["Create.", "View.", "Update.", "Remove.", "All it takes is a click!"];
 var counter = 0;
 
-setTimeout(display_word, 3500);
+setTimeout(display_word, 3000);
 
 $(document).ready(function () {
   // logContainer holds all of our items
@@ -59,49 +59,57 @@ $(document).ready(function () {
   function displayAll() {
     //logContainer.empty();
     var note, expirationDate, dateObtained, block1;
-    var today = moment().format('MM/DD/YY');
+    var today = moment().format('YYYY/MM/DD');
     for (let i = 0; i < items.length; i++) {
       if (items[i].perishable) {
         if (items[i].expiration) {
-          expirationDate = items[i].expiration_date;
-          dateObtained = items[i].when_obtained;
-          if (expirationDate == today) {
-            note = "Expires today!";
-            block1 = "<td class='animated pulse infinite text-danger font-weight-bold'>" + note + "</td>";
+          expirationDate = moment(items[i].expiration_date).format('YYYY/MM/DD');
+          dateObtained = "N/A";
+          if (expirationDate === today) {
+            note = "<td class ='animated pulse infinite'>Expires today!</td>";
+            block1 = "<tr class='text-danger font-weight-bold alert-danger'>";
           }
           else if (moment().diff(expirationDate) < 1) {
-            note = "Expires " + moment(expirationDate).startOf('day').fromNow();
-            block1 = "<td>" + note + "</td>";
+            note = "<td>Expires " + moment(expirationDate).startOf('day').fromNow() + "</td>";
+            block1 = "<tr>";
           }
           else if (moment().diff(expirationDate) > 0) {
-            note = "Expired " + moment(expirationDate).endOf('day').fromNow();
-            block1 = "<td class='animated pulse infinite text-danger font-weight-bold'>" + note + "</td>";
+            note = "<td class ='animated pulse infinite'>Expired " + moment(expirationDate).endOf('day').fromNow() + "</td>";
+            block1 = "<tr class='text-danger font-weight-bold alert-danger'>";
           }
         } else {
-          expirationDate = "";
-          dateObtained = items[i].when_obtained;
-          note = "Obtained " + moment(dateObtained).endOf('day').fromNow();
-          if (moment(dateObtained).endOf('day').fromNow() > 30) {
-            block1 = "<td class='animated pulse infinite text-danger font-weight-bold'>" + note + "</td>";
-          } else if (moment(dateObtained).endOf('day').fromNow() > 14 && moment(dateObtained).endOf('day').fromNow() <= 30) {
-            block1 = "<td class='text-white bg-warning'>" + note + "</td>";
-          } else
-            block1 = "<td>" + note + "</td>";
+          expirationDate = "N/A";
+          dateObtained = moment(items[i].when_obtained).format('YYYY/MM/DD');
+
+          if (dateObtained === today) {
+            note = "<td>Obtained today</td>";
+            block1 = "<tr>";
+          }
+          else {
+            note = "<td>Obtained " + moment(dateObtained).startOf('day').fromNow() + "</td>";
+            if (moment().diff(dateObtained, 'days') > 30)
+              block1 = "<tr class='text-danger ont-weight-bold'>";
+            else if (moment().diff(dateObtained, 'days') > 14 && moment().diff(dateObtained, 'days') <= 30) 
+              block1 = "<tr class='text-danger'>";
+            else 
+              block1 = "<tr>";
+          }
         }
       }
       else {
-        expirationDate = "";
-        dateObtained = "";
-        block1 = "<td></td>";
+        expirationDate = "N/A";
+        dateObtained = "N/A";
+        block1 = "<tr>";
+        note = "<td></td>";
       }
 
-      logContainer.append("<tr>"
+      logContainer.append(block1
         + "<td>" + items[i].name + "</td>"
         + "<td>" + expirationDate + "</td>"
         + "<td>" + dateObtained + "</td>"
         + "<td>" + items[i].quantity + " " + items[i].unit_type + "</td>"
-        + block1
-        + "<td><a class='update' href='javascript:void(0)' data-id1='" + items[i].id + "'><i class='fas fa-pencil-alt'></i></a>  <a class='delete' href='javascript:void(0)' data-id2='" + items[i].id + "'><i class='fa fa-trash'></i></a></td>" +
+        + note
+        + "<td><a class='update' href='javascript:void(0)' data-id1='" + items[i].id + "'><i class='fas fa-pencil-alt'></i></a>  <a class='delete' href='javascript:void(0)' data-id2='" + items[i].id + "'><i class='fa fa-trash' style='color: red'></i></a></td>" +
         "</tr>");
     }
   }
@@ -109,6 +117,7 @@ $(document).ready(function () {
   // This function figures out which item we want to delete and then calls
   // deleteItem
   function handleItemDelete() {
+    confirm("Are you sure you want to delete item?");
     var currentItem = $(this).data("id2");
     deleteItem(currentItem);
   }
@@ -139,5 +148,5 @@ function display_word() {
   counter++;
   if(counter === words.length)
     counter = 0;
-  setTimeout(display_word, 1500);
+  setTimeout(display_word, 1000);
 }

@@ -6,39 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>cabiNet</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
   
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
-
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
-
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:900|Work+Sans:300" rel="stylesheet">
-  <link rel="stylesheet" href="./css/styles.css">
+  
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900|Work+Sans:300" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
 
 </head>
 <body>
     <div class="container">
-      <div id="jumbotron2" class="jumbotron animated fadeInDown">
+      <div id="jumbotron2" class="jumbotron">
         <h1 class="display-4" class="font-weight-bold">
           <div class="btn-group">   
           </div>cabiNe<a href="/log"><i class="fas fa-home animated pulse infinite"></i></a>
         </h1>
         <hr class="my-4">
         
-        <p class="lead font-weight-bold" style="color: white">Fill in the information below to update or add new item.</p>
-  
+        <p class="lead font-weight-bold" style="color: white">Click Home above to return to log page.</p>
+        <p class="animated fadeIn delay-1s" style="color: white">Fill in the information below to update or add new item.</p>
 
       </div>
-            <form id="cms" class="animated flipInX delay-1s">
+            <form id="cms" class="animated flipInX border rounded">
                 <div class="form-row">
                   <div class="form-group col-md-2" >
                     <div class="form-check">
-                      <input class="form-check-input" name="perishable" type="checkbox" id="perishable" onChange="toggle1('perishable', 'expires', 'date_obtained')" value='false'>
+                      <input class="form-check-input" name="perishable" type="checkbox" id="perishable" onChange="toggle('perishable', 'expires')" value='false'>
                       <label class="form-check-label" for="perishable">
                         Perishable
                       </label>
@@ -47,7 +45,7 @@
 
                   <div class="form-group col-md-2" >
                     <div class="form-check">
-                      <input class="form-check-input" name="expiration" disabled="true" type="checkbox" id="expires" onChange="toggle2('expires', 'expiration')" value='false'>
+                      <input class="form-check-input" name="expiration" disabled="true" type="checkbox" id="expires" onChange="toggle('expires', 'expiration')" value='false'>
                       <label class="form-check-label" for="expires">
                         Has Expiration
                       </label>
@@ -83,7 +81,7 @@
                         
                     <div class="form-group col-md-4">
                         <label for="expiration">Expiration Date</label>
-                        <input type="text" disabled="true" class="form-control" id="expiration" placeholder="MM/DD/YY">
+                        <input type="text" disabled="true" class="form-control" id="expiration" placeholder="YYYY/MM/DD">
                     </div>       
                 </div> 
                           
@@ -98,16 +96,25 @@
                     </div>
                     <div class="form-group col-md-4">
                       <label for="date_obtained">Date Obtained</label>
-                      <input type="text" disabled="true" class="form-control" id="date_obtained" placeholder="MM/DD/YY">
+                      <input type="text" class="form-control" id="date_obtained" placeholder="YYYY/MM/DD">
                     </div>
                 </div>
                 
-                <button type="submit" style= "margin-bottom: 15px" class="btn btn-primary">Submit</button>
+                <button type="submit" style= "margin-bottom: 15px" class="btn btn-success">Submit</button>
                 <br>
             </form>
     </div>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
 
-  <!-- Custom Script -->
-  <script src="js/cms.js" type="text/javascript"></script>
+    <script src="js/cms.js" type="text/javascript"></script>
 </body>
 </html>

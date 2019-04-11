@@ -75,14 +75,11 @@ $(document).ready(function() {
           $('input[name=perishable]').attr('checked', true);
           itemPerishableSelect.attr('value', true);
           itemExpiresSelect.attr('disabled', false);
-          dateObtainedInput.attr('disabled', false);
-          dateObtainedInput.val(data.when_obtained); 
         } 
         if(data.expiration) {
           $('input[name=expiration]').attr('checked', true);
           itemExpiresSelect.attr('value', true);
           expirationInput.attr('disabled', false);
-          expirationInput.val(data.expiration_date);
         }            
         nameInput.val(data.name);
         categoryInput.val(data.category);
@@ -113,16 +110,8 @@ $(document).ready(function() {
   }
 });
 
-function toggle1(checkboxID, toggleID1, toggleID2) {
-  var checkbox = document.getElementById(checkboxID);
-  updatecheckbox = checkbox.checked ? checkbox.value=true : checkbox.value=false;
-  var toggle1 = document.getElementById(toggleID1);
-  var toggle2 = document.getElementById(toggleID2);
-  updateToggle1 = checkbox.checked ? toggle1.disabled=false : toggle1.disabled=true;
-  updateToggle2= checkbox.checked ? toggle2.disabled=false : toggle2.disabled=true;
-}
 
-function toggle2(checkboxID, toggleID2) {
+function toggle(checkboxID, toggleID2) {
   var checkbox = document.getElementById(checkboxID);
   updatecheckbox = checkbox.checked ? checkbox.value=true : checkbox.value=false;
   var toggle2 = document.getElementById(toggleID2);

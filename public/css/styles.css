@@ -1,10 +1,12 @@
 body {
   font-family: 'Work Sans', sans-serif !important;
   font-weight: 300 !important;
+  background: whitesmoke;
  }
  
- .jumbotron {
+.jumbotron {
   background: url("https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80") center center / cover no-repeat;
+  height: 406px;
 }
 
 #jumbotron2 {
@@ -15,6 +17,21 @@ body {
   font-family: 'Montserrat', sans-serif !important;
   font-weight: 900 !important;
   color: #f03f35;
+ }
+
+ #table, #cms {
+  background: white;
+}
+
+ #cms {
+   padding: 10px 10px 0px 10px;
+   margin-bottom: 15px;
+ }
+
+ #lead1 {
+  font-family: 'Work Sans', sans-serif !important;
+  font-size: 25px !important;
+  font-weight: bold;
  }
 
  #lead2 {

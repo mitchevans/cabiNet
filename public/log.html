@@ -26,15 +26,16 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron animated slideInDown">
+    <div class="jumbotron" id="jumbotron0">
       <h1 class="display-4" class="font-weight-bold">
         <div class="btn-group">   
         </div>cabiNe<a href="/cms"><i class="fas fa-plus-circle animated pulse infinite"></i></a>
       </h1>
+      <p class="lead font-weight-bold">A simple log web app for your home items to track perishables, inventory & more.</p>
       <hr class="my-4">
       
-      <p class="lead font-weight-bold animated slideInLeft">Click + above to add new item.</p>
-      <p class="animated fadeIn delay-1s">Search for items by filter and/or by search bar.</p>
+      <p class="lead font-weight-bold">Click + above to add new item.</p>
+      <p>Search for items by filter and/or by search bar.</p>
 
       <div class="animated flipInX delay-1s">
         <select class="custom-select col-md-2" id="location">
@@ -58,7 +59,7 @@
 
     </div>
 
-    <table id="table" data-toggle="table" data-pagination="true" data-search="true" class="animated fadeInUp delay-1s">
+    <table class="bg-light animated slideInUp delay-1s" id="table" data-toggle="table" data-pagination="true" data-search="true" data-height="600">
       <thead>
         <tr>
           <th data-align="center" data-sortable="true">Item</th>
