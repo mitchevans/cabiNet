@@ -11,7 +11,7 @@ This project follows the MVC design pattern - uses Node and Express Web Server t
 
 * Has the full CRUD (create, read, update and delete) functionality.
 
-* Utilizes Bootstrap Table plugin which displays data in a tabular format and moment.js for date computations.
+* Utilizes DataTable plugin which displays data in a tabular format and moment.js for date computations.
 
 * Also utilizes Animate.css and Typed.js for animation of elements in the page and transitions.
 

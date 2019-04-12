@@ -4,6 +4,7 @@ var counter = 0;
 setTimeout(display_word, 3000);
 
 $(document).ready(function () {
+
   // logContainer holds all of our items
   var logContainer = $("#log-container");
   var itemLocationSelect = $("#location");
@@ -15,8 +16,6 @@ $(document).ready(function () {
 
   itemLocationSelect.on("change", handleLocationChange);
   itemFilterSelect.on("change", handleFilterChange);
-
-  var items;
 
 
   // This function grabs items from the database and updates the view
@@ -35,11 +34,10 @@ $(document).ready(function () {
       var newURLString = "/api/items/" + locationString + "/" + filterString;
     console.log(newURLString);
     $.get(newURLString, function (data) {
-      items = data;
-      console.log(items);
-      logContainer.empty();
+  
+      console.log(data);
 
-      displayAll();
+      displayAll(data);
     });
   }
 
@@ -56,10 +54,11 @@ $(document).ready(function () {
 
   getItems(itemLocationSelect.val(), itemFilterSelect.val());
 
-  function displayAll() {
-    //logContainer.empty();
+  function displayAll(items) {
+    logContainer.empty();
     var note, expirationDate, dateObtained, block1;
     var today = moment().format('YYYY/MM/DD');
+
     for (let i = 0; i < items.length; i++) {
       if (items[i].perishable) {
         if (items[i].expiration) {
@@ -67,7 +66,7 @@ $(document).ready(function () {
           dateObtained = "N/A";
           if (expirationDate === today) {
             note = "<td class ='animated pulse infinite'>Expires today!</td>";
-            block1 = "<tr class='text-danger font-weight-bold alert-danger'>";
+            block1 = "<tr class='text-danger font-weight-bold table-danger'>";
           }
           else if (moment().diff(expirationDate) < 1) {
             note = "<td>Expires " + moment(expirationDate).startOf('day').fromNow() + "</td>";
@@ -75,7 +74,7 @@ $(document).ready(function () {
           }
           else if (moment().diff(expirationDate) > 0) {
             note = "<td class ='animated pulse infinite'>Expired " + moment(expirationDate).endOf('day').fromNow() + "</td>";
-            block1 = "<tr class='text-danger font-weight-bold alert-danger'>";
+            block1 = "<tr class='text-danger font-weight-bold table-danger'>";
           }
         } else {
           expirationDate = "N/A";
@@ -88,9 +87,9 @@ $(document).ready(function () {
           else {
             note = "<td>Obtained " + moment(dateObtained).startOf('day').fromNow() + "</td>";
             if (moment().diff(dateObtained, 'days') > 30)
-              block1 = "<tr class='text-danger ont-weight-bold'>";
+              block1 = "<tr class='text-danger ont-weight-bold table-danger'>";
             else if (moment().diff(dateObtained, 'days') > 14 && moment().diff(dateObtained, 'days') <= 30) 
-              block1 = "<tr class='text-danger'>";
+              block1 = "<tr class='text-danger  table-warning'>";
             else 
               block1 = "<tr>";
           }
@@ -112,12 +111,25 @@ $(document).ready(function () {
         + "<td><a class='update' href='javascript:void(0)' data-id1='" + items[i].id + "'><i class='fas fa-pencil-alt'></i></a>  <a class='delete' href='javascript:void(0)' data-id2='" + items[i].id + "'><i class='fa fa-trash' style='color: red'></i></a></td>" +
         "</tr>");
     }
+
+    //if ($.fn.DataTable.isDataTable("#table")) {
+      //$('#table').DataTable().destroy();
+    //}
+
+    $('#table').DataTable({
+      scrollY: 400,
+      "columnDefs": [
+        { "orderable": false, "targets": 3 },
+        { "orderable": false, "targets": 4 },
+        { "orderable": false, "targets": 5 }
+      ]
+    });
+
   }
 
   // This function figures out which item we want to delete and then calls
   // deleteItem
   function handleItemDelete() {
-    confirm("Are you sure you want to delete item?");
     var currentItem = $(this).data("id2");
     deleteItem(currentItem);
   }
@@ -131,14 +143,19 @@ $(document).ready(function () {
 
   // This function handles reloading new items when the category changes
   function handleLocationChange() {
+    if ($.fn.DataTable.isDataTable("#table")) 
+      $('#table').DataTable().clear().destroy();
     var newItemLocation = $(this).val();
     getItems(newItemLocation, itemFilterSelect.val());
   }
 
   function handleFilterChange() {
+    if ($.fn.DataTable.isDataTable("#table")) 
+      $('#table').DataTable().clear().destroy();
     var newItemFilter = $(this).val();
     getItems(itemLocationSelect.val(), newItemFilter);
   }
+
 
 });
 
