@@ -38,11 +38,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     quantity: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
     },
     unit_type: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     }
   });
   return Item;

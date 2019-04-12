@@ -28,8 +28,8 @@ $(document).ready(function() {
   // Adding an event listener for when the form is submitted
   $(cmsForm).on("submit", function handleFormSubmit(event) {
     event.preventDefault();
-    // Wont submit the item if we are missing a name and a location
-    if (!nameInput.val().trim() || !itemLocationSelect.val()) {
+    // Wont submit the item if we are missing a name, location, quantity and unit
+    if (!nameInput.val().trim() || !itemLocationSelect.val() || !quantityInput.val() || !unitTypeInput.val()) {
       return;
     }
     // Constructing a newItem object to hand to the database

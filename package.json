@@ -1,22 +1,31 @@
 {
-  "name": "blog-crud",
+  "name": "cabi-Net",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web app logger for home items to keep track of pershables, inventory and more",
   "main": "server.js",
+  "dependencies": {
+    "bootstrap-table": "^1.14.2",
+    "express": "^4.16.4",
+    "moment": "^2.24.0",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.3.1",
+    "typed.js": "^2.0.10"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js"
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doyBrian/cabi-Net.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bootstrap-table": "^1.14.2",
-    "express": "^4.16.3",
-    "moment": "^2.24.0",
-    "mysql2": "^1.6.4",
-    "sequelize": "^4.41.2",
-    "typed.js": "^2.0.10"
-  }
+  "bugs": {
+    "url": "https://github.com/doyBrian/cabi-Net/issues"
+  },
+  "homepage": "https://github.com/doyBrian/cabi-Net#readme"
 }
