@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/mitchevans/cabiNet#readme",
   "dependencies": {
-    "bootstrap-table": "^1.14.2",
+    "bootstrap-table": "^1.20.2",
     "express": "^4.16.4",
     "moment": "^2.24.0",
     "mysql": "^2.16.0",
