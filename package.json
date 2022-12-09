@@ -20,7 +20,7 @@
   "homepage": "https://github.com/mitchevans/cabiNet#readme",
   "dependencies": {
     "bootstrap-table": "^1.14.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "moment": "^2.24.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
